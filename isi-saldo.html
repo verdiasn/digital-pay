@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isi Saldo - DigitalPay Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .pro-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 4px #4f46e5;
+        }
+        input[type="radio"]:checked + label .payment-card {
+            border-color: #4f46e5;
+            background-color: #eef2ff; /* indigo-50 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-700">
+
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-indigo-600">Isi Saldo</h1>
+            <a href="index-pro.html" class="bg-indigo-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-indigo-700 transition-colors duration-300">Kembali ke Beranda</a>
+        </nav>
+    </header>
+
+    <main class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <div class="bg-white p-6 md:p-10 rounded-xl shadow-lg pro-card">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Isi Saldo Dompet Anda</h2>
+                <form class="space-y-6">
+                    <div>
+                        <label for="jumlah-isi" class="block text-sm font-medium text-gray-700">Jumlah Isi Saldo</label>
+                        <input type="number" id="jumlah-isi" placeholder="Contoh: 100000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 p-3" required>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Pilih Metode Pembayaran</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div>
+                                <input type="radio" id="gopay" name="metode-bayar" value="gopay" class="hidden">
+                                <label for="gopay" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Gopay_logo.svg/1200px-Gopay_logo.svg.png" alt="GoPay" class="h-8 w-8">
+                                        <p class="font-semibold text-gray-800">GoPay</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="ovo" name="metode-bayar" value="ovo" class="hidden">
+                                <label for="ovo" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/OVO_logo.png/1200px-OVO_logo.png" alt="OVO" class="h-8 w-8">
+                                        <p class="font-semibold text-gray-800">OVO</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="dana" name="metode-bayar" value="dana" class="hidden">
+                                <label for="dana" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/DANA_logo.svg/1200px-DANA_logo.svg.png" alt="DANA" class="h-8 w-8">
+                                        <p class="font-semibold text-gray-800">DANA</p>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div>
+                                <input type="radio" id="indomaret" name="metode-bayar" value="indomaret" class="hidden">
+                                <label for="indomaret" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Indomaret.svg" alt="Indomaret" class="h-8 w-auto">
+                                        <p class="font-semibold text-gray-800">Indomaret</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div>
+                                <input type="radio" id="alfamart" name="metode-bayar" value="alfamart" class="hidden">
+                                <label for="alfamart" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/Alfamart_logo.svg" alt="Alfamart" class="h-8 w-auto">
+                                        <p class="font-semibold text-gray-800">Alfamart</p>
+                                    </div>
+                                </label>
+                            </div>
+                            
+                            <div>
+                                <input type="radio" id="bank-transfer" name="metode-bayar" value="bank-transfer" class="hidden">
+                                <label for="bank-transfer" class="block cursor-pointer">
+                                    <div class="payment-card bg-gray-50 p-4 rounded-lg flex items-center gap-4 transition-colors border-2 border-transparent hover:bg-indigo-50">
+                                        <i class="fas fa-university text-2xl text-gray-600"></i>
+                                        <p class="font-semibold text-gray-800">Transfer Bank</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-indigo-600 text-white font-semibold py-3 rounded-md hover:bg-indigo-700 transition-colors">Lanjutkan Pembayaran</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Memastikan tombol "Isi Saldo" di index-pro.html mengarah ke halaman ini
+        const topUpButton = document.querySelector('#top-up-button');
+        if (topUpButton) {
+            topUpButton.href = 'isi-saldo.html';
+        }
+    </script>
+</body>
+</html>

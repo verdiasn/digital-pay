@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard DigitalPay Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .pro-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), inset 0 0 0 4px #4f46e5;
+        }
+        .chatbot-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); display: none;
+            justify-content: center; align-items: center; z-index: 9999;
+        }
+        .chatbot-container {
+            position: relative; width: 95%; max-width: 900px; height: 90%;
+            background-color: white; border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); display: flex;
+            flex-direction: column; overflow: hidden;
+        }
+        .chatbot-close-btn {
+            position: absolute; top: 1rem; right: 1rem; background: none;
+            border: none; color: white; font-size: 1.5rem; cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-700">
+
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-indigo-600">DigitalPay <span class="text-indigo-400">PRO</span></h1>
+            <div class="flex items-center gap-4">
+                <button id="chatbot-launcher" class="bg-indigo-600 text-white p-3 rounded-full shadow-lg hover:bg-indigo-700 transition-colors duration-300">
+                    <i class="fas fa-headphones-alt"></i>
+                </button>
+                <div class="relative">
+                    <button id="user-menu-button" class="flex items-center gap-2 p-2 rounded-full text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <i class="fas fa-user-circle text-xl"></i>
+                        <span class="text-sm font-semibold hidden md:inline">Halo, Pengguna</span>
+                        <i class="fas fa-chevron-down text-xs hidden md:inline"></i>
+                    </button>
+                    <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5 hidden z-50">
+                        <a href="dashboard.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                            <i class="fas fa-cog mr-2"></i> Pengaturan
+                        </a>
+                        <a href="index.html" class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 transition-colors duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="py-12 md:py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-8 text-center">Dashboard Saya</h2>
+            
+            <section class="bg-white p-6 rounded-xl shadow-lg mb-8 pro-card">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Saldo Dompet</h3>
+                <div class="flex justify-between items-center">
+                    <p class="text-4xl font-bold text-indigo-600">Rp 15.500.000</p>
+                    <a href="isi-saldo.html" class="bg-indigo-600 text-white px-4 py-2 rounded-full font-semibold text-sm hover:bg-indigo-700 transition-colors">
+                        <i class="fas fa-plus mr-2"></i> Isi Saldo
+                    </a>
+                </div>
+            </section>
+            
+            <section class="mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">Fitur-Fitur Premium</h3>
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="analisis.html" class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-transform transform hover:-translate-y-2">
+                        <i class="fas fa-chart-line text-4xl text-indigo-600 mb-4"></i>
+                        <h4 class="font-bold text-gray-800">Analisis</h4>
+                    </a>
+                    <a href="pembayaran-otomatis.html" class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-transform transform hover:-translate-y-2">
+                        <i class="fas fa-calendar-check text-4xl text-indigo-600 mb-4"></i>
+                        <h4 class="font-bold text-gray-800">Bayar Otomatis</h4>
+                    </a>
+                    <a href="transfer-prioritas.html" class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-transform transform hover:-translate-y-2">
+                        <i class="fas fa-rocket text-4xl text-indigo-600 mb-4"></i>
+                        <h4 class="font-bold text-gray-800">Transfer Prioritas</h4>
+                    </a>
+                    <a href="kunci-dana.html" class="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-2xl transition-transform transform hover:-translate-y-2">
+                        <i class="fas fa-piggy-bank text-4xl text-indigo-600 mb-4"></i>
+                        <h4 class="font-bold text-gray-800">Kunci Dana</h4>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="bg-white p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Riwayat Transaksi</h3>
+                <ul class="divide-y divide-gray-200">
+                    <li class="py-4 flex justify-between items-center">
+                        <div>
+                            <p class="font-medium">Pembelian Kopi</p>
+                            <p class="text-sm text-gray-500">20 September 2025</p>
+                        </div>
+                        <p class="text-red-600 font-semibold">- Rp 25.000</p>
+                    </li>
+                    <li class="py-4 flex justify-between items-center">
+                        <div>
+                            <p class="font-medium">Transfer Masuk dari Budi</p>
+                            <p class="text-sm text-gray-500">19 September 2025</p>
+                        </div>
+                        <p class="text-green-600 font-semibold">+ Rp 150.000</p>
+                    </li>
+                </ul>
+                <a href="dashboard.html" class="mt-4 inline-block text-sm font-semibold text-indigo-600 hover:underline">Lihat Semua Transaksi</a>
+            </section>
+        </div>
+    </main>
+
+    <div id="chatbot-overlay" class="chatbot-overlay">
+        <div class="chatbot-container">
+            <button id="close-chatbot" class="chatbot-close-btn">&times;</button>
+            <div class="flex flex-col flex-1">
+                <div class="bg-indigo-600 p-4 text-white text-center font-bold text-lg rounded-t-2xl">
+                    Selamat datang! Saya Chatbot DigitalPay.
+                </div>
+                <div id="chat-window" class="flex-1 p-4 overflow-y-auto space-y-4 bg-gray-50"></div>
+                <form id="chat-form" class="bg-gray-200 p-4 flex gap-2 rounded-b-2xl">
+                    <input 
+                        id="user-input" 
+                        type="text" 
+                        placeholder="Ketik pesan Anda..." 
+                        class="flex-1 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                    >
+                    <button 
+                        id="send-button"
+                        type="submit" 
+                        class="bg-indigo-600 text-white px-5 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors disabled:bg-indigo-400"
+                    >
+                        Kirim
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const userMenuButton = document.getElementById('user-menu-button');
+        const userMenu = document.getElementById('user-menu');
+        const chatbotLauncher = document.getElementById('chatbot-launcher');
+        const chatbotOverlay = document.getElementById('chatbot-overlay');
+        const closeChatbotBtn = document.getElementById('close-chatbot');
+        const chatForm = document.getElementById('chat-form');
+        const chatWindow = document.getElementById('chat-window');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Fungsi untuk menampilkan/menyembunyikan menu dropdown pengguna
+        userMenuButton.addEventListener('click', (event) => {
+            event.stopPropagation();
+            userMenu.classList.toggle('hidden');
+            userMenu.classList.toggle('block');
+        });
+        document.addEventListener('click', (event) => {
+            if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.classList.add('hidden');
+                userMenu.classList.remove('block');
+            }
+        });
+        
+        // Fungsi untuk menampilkan/menyembunyikan chatbot
+        chatbotLauncher.addEventListener('click', () => {
+            chatbotOverlay.style.display = 'flex';
+        });
+        closeChatbotBtn.addEventListener('click', () => {
+            chatbotOverlay.style.display = 'none';
+        });
+
+        // Fungsi untuk menambahkan pesan ke jendela obrolan
+        function addMessage(sender, message) {
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('flex', 'items-start', 'gap-3');
+            
+            const messageBubble = document.createElement('div');
+            messageBubble.classList.add('p-3', 'rounded-xl', 'max-w-xs', 'shadow-md');
+
+            if (sender === 'user') {
+                messageContainer.classList.add('justify-end');
+                messageBubble.classList.add('bg-blue-500', 'text-white', 'rounded-br-none');
+                messageBubble.textContent = message;
+            } else {
+                messageContainer.classList.add('justify-start');
+                messageBubble.classList.add('bg-gray-300', 'text-gray-800', 'rounded-bl-none');
+                messageBubble.innerHTML = message;
+            }
+
+            messageContainer.appendChild(messageBubble);
+            chatWindow.appendChild(messageContainer);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        // Fungsi logika chatbot
+        function getBotResponse(input) {
+            const lowerInput = input.toLowerCase();
+
+            if (lowerInput.includes('halo') || lowerInput.includes('hai')) {
+                return 'Halo! Ada yang bisa saya bantu terkait fitur DigitalPay Pro?';
+            } else if (lowerInput.includes('fitur pro') || lowerInput.includes('fitur premium')) {
+                return 'Tentu! DigitalPay Pro memiliki fitur unggulan seperti Analisis Keuangan Mendalam, Pembayaran Tagihan Otomatis, Transfer Prioritas, dan Kunci Dana. Anda bisa mengklik ikon fitur di atas untuk mencobanya.';
+            } else if (lowerInput.includes('isi saldo')) {
+                return 'Untuk isi saldo, silakan klik tombol *Isi Saldo* di bagian atas dashboard Anda. Kami menerima pembayaran via Transfer Bank, GoPay, OVO, DANA, dan melalui gerai Indomaret atau Alfamart.';
+            } else if (lowerInput.includes('bantuan') || lowerInput.includes('masalah')) {
+                return 'Silakan jelaskan masalah Anda. Tim dukungan kami akan segera menghubungi Anda. Atau, kunjungi halaman *Pengaturan* untuk detail kontak.';
+            } else if (lowerInput.includes('terima kasih') || lowerInput.includes('makasih')) {
+                return 'Sama-sama! Senang bisa membantu Anda.';
+            } else {
+                return 'Maaf, saya tidak mengerti pertanyaan Anda. Silakan coba tanyakan tentang fitur atau masalah umum.';
+            }
+        }
+
+        // Event listener untuk pengiriman formulir obrolan
+        chatForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userMessage = userInput.value.trim();
+            
+            if (userMessage === '') {
+                return;
+            }
+
+            sendButton.disabled = true;
+            userInput.disabled = true;
+
+            addMessage('user', userMessage);
+            userInput.value = '';
+
+            addMessage('bot', 'Typing...');
+            const typingIndicator = chatWindow.lastChild;
+
+            // Simulasikan jeda untuk respons bot
+            setTimeout(() => {
+                if (typingIndicator) typingIndicator.remove();
+                const botMessage = getBotResponse(userMessage);
+                addMessage('bot', botMessage);
+                sendButton.disabled = false;
+                userInput.disabled = false;
+                userInput.focus();
+            }, 1000); // Jeda 1 detik
+        });
+    </script>
+</body>
+</html>
